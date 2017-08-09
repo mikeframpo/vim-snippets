@@ -21,9 +21,15 @@ snippet begin \begin{} ... \end{} block
 	\\end{$1}
 # Tabular
 snippet tab tabular (or arbitrary) environment
-	\\begin{${1:tabular}}{${2:c}}
-		${0:${VISUAL}}
-	\\end{$1}
+	\\begin{table}
+		\\caption{\\label{tab:${1}}}
+		\\centering
+		\\begin{tabular}{| c | c |${2}}
+			\\hline
+			Heading1 & Heading2 \\\\ \\hline \\hline
+			Value1 & Value2 \\\\ \\hline
+		\\end{tabular}
+	\\end{table}
 snippet thm thm (or arbitrary) environment with optional argument
 	\\begin[${1:author}]{${2:thm}}
 		${0:${VISUAL}}
@@ -232,13 +238,10 @@ snippet ft \footnote
 	\\footnote{${1:${VISUAL:text}}} ${0}
 snippet fig figure environment (includegraphics)
 	\\begin{figure}
-	\\begin{center}
-		\\includegraphics[scale=${1}]{Figures/${2}}
-	\\end{center}
-	\\caption{${3}}
-	\\label{fig:${4}}
+	\\centering
+		\\includegraphics[width=${1}\\textwidth]{\\imgdir/${2}}
+	\\caption{\\label{${3}}}
 	\\end{figure}
-	${0}
 snippet tikz figure environment (tikzpicture)
 	\\begin{figure}[htpb]
 	\\begin{center}
@@ -251,14 +254,14 @@ snippet tikz figure environment (tikzpicture)
 	\\end{figure}
 	${0}
 snippet subfig subfigure environment
-	\\begin{subfigure}[${1}]{${2:\\textwidth}}
-	\\begin{center}
-		${3}
-	\\end{center}
-	\\caption{${4}}
-	\\label{fig:${5}}
-	\\end{subfigure}
-	${0}
+	\\begin{figure}
+		\\centering
+		\\begin{subfigure}[b]{0.49\\textwidth}
+			\\includegraphics{\\imgdir/${1}}
+			\\caption{\\label{$2}}
+		\\end{subfigure}
+		\\caption{\\label{${2:label}}}
+	\\end{figure}
 snippet tikzcd tikzcd environment in equation
 	\\begin{equation}
 	\\begin{tikzcd}
