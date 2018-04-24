@@ -239,8 +239,8 @@ snippet ft \footnote
 snippet fig figure environment (includegraphics)
 	\\begin{figure}
 	\\centering
-		\\includegraphics[width=${1}\\textwidth]{\\imgdir/${2}}
-	\\caption{\\label{${3}}}
+		\\includegraphics[width=${1}\\largeplotsize]{\\imgdir/${2}}
+		\\caption{\\label{${3}}}
 	\\end{figure}
 snippet tikz figure environment (tikzpicture)
 	\\begin{figure}[htpb]
@@ -256,8 +256,8 @@ snippet tikz figure environment (tikzpicture)
 snippet subfig subfigure environment
 	\\begin{figure}
 		\\centering
-		\\begin{subfigure}[b]{0.49\\textwidth}
-			\\includegraphics{\\imgdir/${1}}
+		\\begin{subfigure}[b]{\\textwidth}
+			\\includegraphics[width=\largeplotsize]{\\imgdir/${1}}
 			\\caption{\\label{$2}}
 		\\end{subfigure}
 		\\caption{\\label{${2:label}}}
