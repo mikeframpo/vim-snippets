@@ -22,8 +22,9 @@ snippet begin \begin{} ... \end{} block
 # Tabular
 snippet tab tabular (or arbitrary) environment
 	\\begin{table}
-		\\caption{\\label{tab:${1}}}
 		\\centering
+		\\renewcommand{\\arraystretch}{\\defaultstretch}
+		\\caption{\\label{tab:${1}}}
 		\\begin{tabular}{| c | c |${2}}
 			\\hline
 			Heading1 & Heading2 \\\\ \\hline \\hline
@@ -257,6 +258,7 @@ snippet subfig subfigure environment
 	\\begin{figure}
 		\\centering
 		\\begin{subfigure}[b]{\\textwidth}
+			\\centering
 			\\includegraphics[width=\largeplotsize]{\\imgdir/${1}}
 			\\caption{\\label{$2}}
 		\\end{subfigure}
